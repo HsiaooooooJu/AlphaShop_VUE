@@ -1,5 +1,6 @@
 .navbar {
   position: fixed;
+  top: 0;
   width: 100%;
   height: 56px;
   z-index: 999;
@@ -15,7 +16,6 @@
     display: grid;
     max-width: 1200px;
     min-width: 1024px;
-    width: 100%;
     grid-template-columns: 0.5fr 0.5fr repeat(3, 1fr) 3fr 5fr;
     align-items: start;
     gap: 1rem;
