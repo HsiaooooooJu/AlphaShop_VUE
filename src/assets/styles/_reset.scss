@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+ul,
+li {
+  /* remove dots */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:hover,
+a:focus {
+  /* remove underline */
+  text-decoration: none;
+}
+
+a {
+  color: var(--main-color);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+button,
+button:focus,
+input:focus,
+textarea:focus,
+select,
+select:focus,
+a:focus {
+  outline: 0px !important;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  button:disabled {
+    pointer-events: none;
+  }
+}
+
+select {
+  border: none;
+}
+
+input:required,
+input:invalid {
+  box-shadow: none;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--input-placeholder);
+  opacity: 1;
+  /* Firefox adds a lower opacity to the placeholder,
+    so use opacity: 1 to fix this. */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--input-placeholder);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--input-placeholder);
+}

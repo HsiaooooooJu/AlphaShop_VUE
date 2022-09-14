@@ -1,0 +1,37 @@
+:root {
+  --main-color: #2a2a2a;
+  --primary-color: #f67599;
+  --light-gray: #f0f0f5;
+  --gray: #afb1bd;
+  --label: #808080;
+  --body-bg: #fff;
+  --cart-bg: #fff;
+  --input-placeholder: #999999;
+  --footer-bg: #f6f7f8;
+  --footer-color: #808080;
+  --circle-container-bg: #333;
+  --circle-container-color: #dedede;
+  --amount-btn-color: #f0f0f5;
+  --icon-brightness: brightness(1);
+  --dark-mode-url: url("/src/assets/images/moon.svg");
+  --logo-url: url("/src/assets/images/logo.svg");
+}
+
+:root[data-theme="dark"] {
+  --main-color: #fff;
+  --primary-color: #f67599;
+  --light-gray: #f0f0f5;
+  --gray: #afb1bd;
+  --label: #808080;
+  --body-bg: #121212;
+  --cart-bg: rgba(255, 255, 255, 20%);
+  --input-placeholder: #999999;
+  --footer-bg: #333;
+  --footer-color: rgba(255, 255, 255, 60%);
+  --circle-container-bg: #333;
+  --circle-container-color: #dedede;
+  --amount-btn-color: #808080;
+  --icon-brightness: brightness(80);
+  --dark-mode-url: url("/src/assets/images/sun.svg");
+  --logo-url: url("/src/assets/images/white-logo.svg");
+}
