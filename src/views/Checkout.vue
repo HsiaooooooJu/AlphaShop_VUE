@@ -8,12 +8,18 @@
 
       <section class="form-panel">
         <form action="" class="form-panel__container__form">
-          <!-- DestinationForm -->
+          <div class="form-content__part">
 
-          <!-- ShippingForm -->
+            <!-- DestinationForm -->
+            <DestinationForm class="d-none" />
 
-          <!-- PaymentForm -->
-          
+            <!-- ShippingForm -->
+            <ShippingForm class="d-none" />
+
+            <!-- PaymentForm -->
+            <PaymentForm />
+            
+          </div>
         </form>
       </section>
       
@@ -29,12 +35,18 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import Stepper from '../components/Stepper.vue'
+import DestinationForm from '../components/DestinationForm.vue'
+import ShippingForm from '../components/ShippingForm.vue'
+import PaymentForm from '../components/PaymentForm.vue'
 
 export default {
   name: "Checkout",
   components: {
     Navbar,
     Stepper,
+    DestinationForm,
+    ShippingForm,
+    PaymentForm
   }
 };
 </script>
