@@ -25,6 +25,7 @@
       
       <!-- CartPanel -->
       <!-- ButtonPanel -->
+      <BtnPanel />
 
     </main>
     <!-- Footer -->
@@ -38,6 +39,7 @@ import Stepper from '../components/Stepper.vue'
 import DestinationForm from '../components/DestinationForm.vue'
 import ShippingForm from '../components/ShippingForm.vue'
 import PaymentForm from '../components/PaymentForm.vue'
+import BtnPanel from '../components/BtnPanel.vue'
 
 export default {
   name: "Checkout",
@@ -46,7 +48,8 @@ export default {
     Stepper,
     DestinationForm,
     ShippingForm,
-    PaymentForm
+    PaymentForm,
+    BtnPanel
   }
 };
 </script>
