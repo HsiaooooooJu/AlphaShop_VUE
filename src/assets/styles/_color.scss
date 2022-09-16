@@ -1,33 +1,53 @@
+// $primary-color: #F67599;
+
+// $light: #FFF;
+// $gray-50: #F0F0F5;
+// $gray-100: #DEDEDE;
+// $gray-200: #AFB1BD;
+// $gray-300: #999999;
+// $gray-400: #808080;
+// $gray-500: #5E5E5E;
+// $gray-600: #4A4A4A;
+// $gray-700: #333;
+// $gray-800: #2A2A2A;
+// $gray-900: #121212;
+
 :root {
-  --main-color: #2a2a2a;
-  --primary-color: #f67599;
-  --light-gray: #f0f0f5;
-  --gray: #afb1bd;
+  --main-color: #2A2A2A;
+  --primary-color: #F67599;
+  --light-gray: #F0F0F5;
+  --gray: #AFB1BD;
+  --input-border: #4A4A4A;
+  --btn-panel-border: #E6E6Eb;
   --label: #808080;
-  --body-bg: #fff;
-  --cart-bg: #fff;
+  --body-bg: #FFF;
+  --cart-bg: #FFF;
+  --cart-border: #E6E6Eb;
   --input-placeholder: #999999;
-  --footer-bg: #f6f7f8;
+  --footer-bg: #F6F7F8;
   --footer-color: #808080;
   --circle-container-bg: #333;
-  --circle-container-color: #dedede;
-  --amount-btn-color: #f0f0f5;
+  --circle-container-color: #DEDEDE;
+  --amount-btn-color: #F0F0F5;
   --icon-brightness: brightness(1);
 }
 
 :root[data-theme="dark"] {
-  --main-color: #fff;
-  --primary-color: #f67599;
-  --light-gray: #f0f0f5;
-  --gray: #afb1bd;
+  --main-color: $light;
+  --primary-color: #F67599;
+  --light-gray: #F0F0F5;
+  --gray: #AFB1BD;
+  --input-border: #5E5E5E;
+  --btn-panel-border: #5E5E5E;
   --label: #808080;
   --body-bg: #121212;
-  --cart-bg: rgba(255, 255, 255, 20%);
+  --cart-bg: #383838;
+  --cart-border: #5E5E5E;
   --input-placeholder: #999999;
   --footer-bg: #333;
-  --footer-color: rgba(255, 255, 255, 60%);
+  --footer-color: #999999;
   --circle-container-bg: #333;
-  --circle-container-color: #dedede;
+  --circle-container-color: #DEDEDE;
   --amount-btn-color: #808080;
   --icon-brightness: brightness(80);
 }

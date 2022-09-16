@@ -1,0 +1,115 @@
+.cart-panel {
+  grid-area: 2 / 2 / span 3 / 2;
+  height: 91%;
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid var(--cart-border);
+  border-radius: 0.5rem;
+  background-color: var(--cart-bg);
+
+  .cart__product {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      display: block;
+      width: 90%;
+      margin: 2rem auto;
+    }
+
+    &__row {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      width: 90%;
+      padding: 0;
+      margin: 1rem auto;
+      align-items: flex-start;
+
+      .product-img {
+        width: 6.25rem;
+        height: 6.25rem;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px;
+      }
+
+      .product-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 0 1rem;
+
+        &__name {
+          margin: 0 1rem;
+          font-size: 1rem;
+          font-weight: 400;
+        }
+
+        &__amount {
+          // position: relative;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin: 1rem;
+          font-weight: 500;
+
+          .amount__add,
+          .amount__minus {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: var(--amount-btn-color);
+            text-align: center;
+          }
+
+          .amount__count {
+            margin: 0 1.8rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        &__price {
+          position: absolute;
+          right: 0;
+          top: 0;
+          font-weight: 700;
+
+          &::before {
+            content: "$ ";
+          }
+        }
+      }
+    }
+  }
+
+  .cart__delivery,
+  .cart__subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.8rem auto 0 auto;
+    padding: 1.5rem 0;
+    width: 90%;
+    border-top: 1px solid var(--cart-border);
+    font-size: 0.9rem;
+
+    .delivery-price,
+    .subtotal-price {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .subtotal-price::before {
+      content: "$ ";
+    }
+  }
+
+  .cart__delivery {
+    padding: 1rem 0 0;
+  }
+
+  .cart__subtotal {
+    padding: 1rem 0;
+  }
+}

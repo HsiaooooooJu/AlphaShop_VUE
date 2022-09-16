@@ -24,6 +24,8 @@
       </section>
       
       <!-- CartPanel -->
+      <CartPanel :products="products" />
+      
       <!-- ButtonPanel -->
       <BtnPanel />
 
@@ -40,6 +42,24 @@ import DestinationForm from '../components/DestinationForm.vue'
 import ShippingForm from '../components/ShippingForm.vue'
 import PaymentForm from '../components/PaymentForm.vue'
 import BtnPanel from '../components/BtnPanel.vue'
+import CartPanel from '../components/CartPanel.vue'
+
+const productData = {
+  products: [
+    {
+      id: 1,
+      name: '破壞修身牛仔褲',
+      price: 2000,
+      image: 'dagny-petite-jeans.png'
+    },
+    {
+      id: 2,
+      name: '刷色寬筒牛仔褲',
+      price: 2500,
+      image: 'block-wide-jeans.png'
+    }
+  ]
+}
 
 export default {
   name: "Checkout",
@@ -49,7 +69,27 @@ export default {
     DestinationForm,
     ShippingForm,
     PaymentForm,
+    CartPanel,
     BtnPanel
+  },
+  data() {
+    return {
+      products: []
+    }
+  },
+  methods: {
+    fetchProducts() {
+      this.products = productData.products.map(product => {
+        return {
+          ...product,
+          // dynamic paths need to be wrapped in a require call
+          image: require('../assets/images/' + product.image)
+        }
+      })
+    }
+  },
+  created() {
+    this.fetchProducts()
   }
 };
 </script>
