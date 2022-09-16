@@ -4,7 +4,7 @@
       <h3 class="cart__product__title">購物籃</h3>
 
       <div v-for="product in products" :key="product.id" class="cart__product__row">
-        <img :src="product.image" class="product-img" alt="">
+        <img :src="getImg(product.image)" class="product-img" alt="">
         <div class="product-details">
           <h5 class="product-details__name">{{ product.name }}</h5>
           <div class="product-details__amount">
@@ -35,8 +35,13 @@ export default {
   props: {
     products: {
       type: Array,
-      default: () => []
+      required: true
     }
   },
+  methods: {
+    getImg(img) {
+      return require(`../assets/images/${img}`);
+    }
+  }
 }
 </script>

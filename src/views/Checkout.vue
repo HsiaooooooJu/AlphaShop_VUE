@@ -4,28 +4,28 @@
       <Navbar />
     </header>
     <main class="main-content">
-      <Stepper />
+      <Stepper :steps="steps" />
 
       <section class="form-panel">
         <form action="" class="form-panel__container__form">
           <div class="form-content__part">
 
             <!-- DestinationForm -->
-            <DestinationForm class="d-none" />
+            <DestinationForm />
 
             <!-- ShippingForm -->
-            <ShippingForm class="d-none" />
+            <ShippingForm :shipping-methods="shippingMethods" class="d-none" />
 
             <!-- PaymentForm -->
-            <PaymentForm />
-            
+            <PaymentForm class="d-none" />
+
           </div>
         </form>
       </section>
-      
+
       <!-- CartPanel -->
       <CartPanel :products="products" />
-      
+
       <!-- ButtonPanel -->
       <BtnPanel />
 
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { CheckoutConfigs } from '../configs/CheckoutConfigs'
+
 import Navbar from '../components/Navbar.vue'
 import Stepper from '../components/Stepper.vue'
 import DestinationForm from '../components/DestinationForm.vue'
@@ -45,23 +47,6 @@ import PaymentForm from '../components/PaymentForm.vue'
 import BtnPanel from '../components/BtnPanel.vue'
 import CartPanel from '../components/CartPanel.vue'
 import Footer from '../components/Footer.vue'
-
-const productData = {
-  products: [
-    {
-      id: 1,
-      name: '破壞修身牛仔褲',
-      price: 2000,
-      image: 'dagny-petite-jeans.png'
-    },
-    {
-      id: 2,
-      name: '刷色寬筒牛仔褲',
-      price: 2500,
-      image: 'block-wide-jeans.png'
-    }
-  ]
-}
 
 export default {
   name: "Checkout",
@@ -76,23 +61,14 @@ export default {
     Footer
   },
   data() {
+    const { shippingMethods, steps, productData } = CheckoutConfigs
     return {
-      products: []
+      products: productData,
+      steps,
+      shippingMethods,
+      totalSteps: steps.length,
+      currentStep: 1,
     }
   },
-  methods: {
-    fetchProducts() {
-      this.products = productData.products.map(product => {
-        return {
-          ...product,
-          // dynamic paths need to be wrapped in a require call
-          image: require('../assets/images/' + product.image)
-        }
-      })
-    }
-  },
-  created() {
-    this.fetchProducts()
-  }
-};
+}
 </script>
