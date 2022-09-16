@@ -31,6 +31,7 @@
 
     </main>
     <!-- Footer -->
+    <Footer />
 
   </div>
 </template>
@@ -43,6 +44,7 @@ import ShippingForm from '../components/ShippingForm.vue'
 import PaymentForm from '../components/PaymentForm.vue'
 import BtnPanel from '../components/BtnPanel.vue'
 import CartPanel from '../components/CartPanel.vue'
+import Footer from '../components/Footer.vue'
 
 const productData = {
   products: [
@@ -70,7 +72,8 @@ export default {
     ShippingForm,
     PaymentForm,
     CartPanel,
-    BtnPanel
+    BtnPanel,
+    Footer
   },
   data() {
     return {
