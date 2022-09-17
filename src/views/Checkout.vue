@@ -4,20 +4,20 @@
       <Navbar />
     </header>
     <main class="main-content">
-      <Stepper :steps="steps" />
+      <Stepper :steps="steps" :initial-current-step="currentStep" />
 
       <section class="form-panel">
         <form action="" class="form-panel__container__form">
           <div class="form-content__part">
 
             <!-- DestinationForm -->
-            <DestinationForm />
+            <DestinationForm v-show="currentStep === 1" />
 
             <!-- ShippingForm -->
-            <ShippingForm :shipping-methods="shippingMethods" class="d-none" />
+            <ShippingForm :shipping-methods="shippingMethods" v-show="currentStep === 2" />
 
             <!-- PaymentForm -->
-            <PaymentForm class="d-none" />
+            <PaymentForm v-show="currentStep === 3" />
 
           </div>
         </form>
@@ -27,7 +27,7 @@
       <CartPanel :products="products" />
 
       <!-- ButtonPanel -->
-      <BtnPanel />
+      <BtnPanel :steps="steps" :initial-current-step="currentStep" :total-step="totalSteps" @handle-step="handleStep" />
 
     </main>
     <!-- Footer -->
@@ -68,7 +68,16 @@ export default {
       shippingMethods,
       totalSteps: steps.length,
       currentStep: 1,
+      previousStep: 0,
+      nextStep: 2
     }
+  },
+  methods: {
+    handleStep(payload) {
+      const { currentStep } = payload
+      this.currentStep = currentStep
+      // console.log(currentStep)
+    },
   },
 }
 </script>
