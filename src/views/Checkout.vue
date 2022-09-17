@@ -24,7 +24,7 @@
       </section>
 
       <!-- CartPanel -->
-      <CartPanel :products="products" />
+      <CartPanel :initial-products="products" />
 
       <!-- ButtonPanel -->
       <BtnPanel :steps="steps" :initial-current-step="currentStep" :total-step="totalSteps" @handle-step="handleStep" />
