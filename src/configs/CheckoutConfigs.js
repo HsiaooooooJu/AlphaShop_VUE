@@ -30,15 +30,17 @@ export const CheckoutConfigs = {
   shippingMethods: [
     {
       id: 1,
+      name: 'standard',
       method: '標準運送',
       days: '約 3-7 個工作天',
-      price: 0
+      price: 0,
     },
     {
       id: 2,
+      name: 'express',
       method: 'DHL 貨運',
       days: '48 小時內送達',
-      price: 500
+      price: 500,
     }
   ]
 }

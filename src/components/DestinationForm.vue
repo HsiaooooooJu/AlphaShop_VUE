@@ -37,7 +37,7 @@
           </select>
         </div>
       </div>
-      
+
       <div class="destination__form-row form-row address-row">
         <label for="address">地址</label>
         <input v-model="receiver.address" type="text" id="address" placeholder="請輸入地址">
@@ -47,9 +47,14 @@
 </template>
 
 <script>
-// const storageKey = 'receiver'
 export default {
   name: 'DestinationForm',
+  props: {
+    orderReceiver: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data() {
     return {
       receiver: {
@@ -62,11 +67,33 @@ export default {
       }
     }
   },
-  // methods: {
-  //   saveStorage() {
-  //     localStorage.setItem(storageKey, JSON.stringify(this.receiver))
-  //     console.log(this.receiver)
-  //   },
-  // }
+  methods: {
+    fetchReceiver() {
+      this.receiver = {
+        // 先展開 data 裡的預設值，也就是空白表單
+        ...this.receiver,
+
+        // 接著展開 props 裡的資料，也就是父層傳進來的資料
+        // 如果有資料，就放進 data 空白表單裡
+        ...this.orderReceiver
+      }
+    },
+    getReceiverInfo() {
+      this.$emit('get-receiver-info', this.receiver)
+    }
+  },
+  // 要利用 watch 監視資料變化
+  watch: {
+    receiver: {
+      deep: true,
+      // handler: 如果資料改變，要執行的處理程序
+      handler() {
+        this.getReceiverInfo()
+      }
+    }
+  },
+  created() {
+    this.fetchReceiver()
+  }
 }
 </script>

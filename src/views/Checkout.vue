@@ -11,20 +11,23 @@
           <div class="form-content__part">
 
             <!-- DestinationForm -->
-            <DestinationForm v-show="currentStep === 1" />
+            <DestinationForm :order-receiver="order.receiver" v-show="currentStep === 1"
+              @get-receiver-info="getReceiverInfo" />
 
             <!-- ShippingForm -->
-            <ShippingForm :shipping-methods="shippingMethods" v-show="currentStep === 2" />
+            <ShippingForm :shipping-methods="shippingMethods" :initial-selected="order.shipping"
+              v-show="currentStep === 2" @handle-shipping="handleShipping" />
 
             <!-- PaymentForm -->
-            <PaymentForm v-show="currentStep === 3" />
+            <PaymentForm :order-payment="order.payment" v-show="currentStep === 3"
+              @handle-payment-info="handlePaymentInfo" />
 
           </div>
         </form>
       </section>
 
       <!-- CartPanel -->
-      <CartPanel :initial-products="products" />
+      <CartPanel :initial-products="products" :order-shipping = "order.shipping" :order-cart="order.cart" @handle-cart-info="handleCartInfo" />
 
       <!-- ButtonPanel -->
       <BtnPanel :steps="steps" :initial-current-step="currentStep" :total-step="totalSteps" @handle-step="handleStep" />
@@ -37,6 +40,9 @@
 </template>
 
 <script>
+
+// const storageKey = 'order'
+
 import { CheckoutConfigs } from '../configs/CheckoutConfigs'
 
 import Navbar from '../components/Navbar.vue'
@@ -63,21 +69,61 @@ export default {
   data() {
     const { shippingMethods, steps, productData } = CheckoutConfigs
     return {
+      storageKey: 'order',
       products: productData,
       steps,
       shippingMethods,
       totalSteps: steps.length,
       currentStep: 1,
-      previousStep: 0,
-      nextStep: 2
+      order: {
+        receiver: {},
+        shipping: {
+          price: 0,
+          picked: 'standard'
+        },
+        payment: {},
+        cart: {}
+      }
     }
   },
   methods: {
+    fetchOrder() {
+      const getOrder = JSON.parse(localStorage.getItem(this.storageKey))
+      this.order = {
+        ...this.order,
+        ...getOrder
+      }
+      console.log(this.order.cart)
+    },
     handleStep(payload) {
       const { currentStep } = payload
       this.currentStep = currentStep
       // console.log(currentStep)
     },
+    getReceiverInfo(payload) {
+      this.order.receiver = payload
+      this.saveStorage()
+    },
+    handleShipping(payload) {
+      this.order.shipping = payload
+      // console.log(payload)
+      this.saveStorage()
+    },
+    handlePaymentInfo(payload) {
+      this.order.payment = payload
+      this.saveStorage()
+    },
+    handleCartInfo(cartInfo){
+      this.order.cart = cartInfo
+      this.saveStorage()
+    },
+    saveStorage() {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.order))
+    },
+
   },
+  created() {
+    this.fetchOrder()
+  }
 }
 </script>
