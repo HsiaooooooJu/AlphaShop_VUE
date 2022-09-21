@@ -30,18 +30,20 @@
       <CartPanel :initial-products="products" :order-shipping = "order.shipping" :order-cart="order.cart" @handle-cart-info="handleCartInfo" />
 
       <!-- ButtonPanel -->
-      <BtnPanel :steps="steps" :initial-current-step="currentStep" :total-step="totalSteps" @handle-step="handleStep" />
+      <BtnPanel :steps="steps" :initial-current-step="currentStep" :total-step="totalSteps" :order="order" @handle-step="handleStep" @handle-order="handleOrder" />
 
     </main>
     <!-- Footer -->
     <Footer :dark-mode="darkMode" />
 
+    <!-- Modal -->
+    <Modal v-show="showModal" :order="order" @close="showModal=false" />
+    <!-- <Modal v-show="showModal" :order="order" /> -->
+
   </div>
 </template>
 
 <script>
-
-// const storageKey = 'order'
 
 import { CheckoutConfigs } from '../configs/CheckoutConfigs'
 
@@ -54,6 +56,8 @@ import BtnPanel from '../components/BtnPanel.vue'
 import CartPanel from '../components/CartPanel.vue'
 import Footer from '../components/Footer.vue'
 
+import Modal from '../components/Modal.vue'
+
 export default {
   name: "Checkout",
   components: {
@@ -64,7 +68,8 @@ export default {
     PaymentForm,
     CartPanel,
     BtnPanel,
-    Footer
+    Footer,
+    Modal
   },
   data() {
     const { shippingMethods, steps, productData } = CheckoutConfigs
@@ -84,7 +89,8 @@ export default {
         payment: {},
         cart: {}
       },
-      darkMode: false
+      darkMode: false,
+      showModal: false
     }
   },
   methods: {
@@ -94,7 +100,7 @@ export default {
         ...this.order,
         ...getOrder
       }
-      console.log(this.order.cart)
+      // console.log(this.order)
     },
     handleStep(payload) {
       const { currentStep } = payload
@@ -125,6 +131,14 @@ export default {
       } else {
         document.documentElement.setAttribute("data-theme", "")
       }
+    },
+    handleOrder() {
+      this.showModal = true
+      // this.$swal.fire(
+      // "訂單已送出!",
+      // `訂單總金額：${this.order.cart.subtotal}`,
+      // "success"
+      // );
     },
     saveStorage() {
       localStorage.setItem(this.storageKey, JSON.stringify(this.order))

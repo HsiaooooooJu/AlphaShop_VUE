@@ -4,9 +4,12 @@
       <i class="fa-solid fa-arrow-left-long"></i>
       上一步
     </button>
+    <!-- <button v-html="nextStepContent" @click.prevent.stop="handleNextStep" class="btn btn-primary next"></button> -->
 
-    <button v-html="nextStepContent" @click.prevent.stop="handleNextStep" class="btn btn-primary next">
-    </button>
+    <button v-show="currentStep < totalStep" @click.prevent.stop="handleNextStep" class="btn btn-primary next">下一步 <i class="fa-solid fa-arrow-right-long"></i></button>
+
+    <button v-show="currentStep === totalStep" @click.prevent.stop="handleOrder" class="btn btn-primary next">確認結帳</button>
+
   </section>
 </template>
 
@@ -46,16 +49,12 @@ export default {
       this.$emit('handle-step', {
         currentStep: this.currentStep
       })
-    }
-  },
-  computed: {
-    nextStepContent() {
+    },
+    handleOrder() {
       if (this.currentStep === this.totalStep) {
-        return '確認結帳'
-      } else {
-        return `下一步 <i class="fa-solid fa-arrow-right-long"></i>`
+        this.$emit('handle-order')
       }
     }
-  }
+  },
 }
 </script>

@@ -8,8 +8,8 @@
         <div class="form-row__select-wrapper">
           <select v-model="receiver.gender" name="gender" id="gender" required>
             <option value="" disabled selected>請選擇稱謂</option>
-            <option value="mister">先生</option>
-            <option value="miss">小姐</option>
+            <option value="Mister">先生</option>
+            <option value="Miss">小姐</option>
           </select>
         </div>
       </div>

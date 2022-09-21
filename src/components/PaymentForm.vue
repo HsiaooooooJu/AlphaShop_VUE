@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     payment: {
-      depp: true,
+      deep: true,
       handler() {
         this.getPaymentInfo()
       }
