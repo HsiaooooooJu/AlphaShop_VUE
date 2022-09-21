@@ -2,8 +2,8 @@
   <footer>
     <div class="footer__container container">
       <div class="navbar__brand__logo">
-        <img src="../assets/images/logo.svg" class="logo" alt="">
-        <img src="../assets/images/white-logo.svg" class="white-logo d-none" alt="">
+        <img v-show="darkMode" src="../assets/images/logo.svg" class="logo" alt="">
+        <img v-show="!darkMode" src="../assets/images/white-logo.svg" class="white-logo" alt="">
       </div>
       <div class="footer__container__list">
         <h5 class="footer__container__list__title">客戶服務</h5>
@@ -44,3 +44,9 @@
     </div>
   </footer>
 </template>
+
+<script>
+export default {
+  name: 'Footer',
+}
+</script>

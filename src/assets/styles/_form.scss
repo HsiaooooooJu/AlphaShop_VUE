@@ -65,7 +65,7 @@ input {
       padding: 6px 10px;
       height: 60px;
       width: 100%;
-      border: 1px solid var(--light-gray);
+      border: 1px solid var(--shipping-row-border);
       border-radius: 8px;
 
       input[type="radio"] {
@@ -86,8 +86,8 @@ input {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      border-radius: 4px;
+      height: 60px;
+      border-radius: 8px;
       border: 1px solid var(--main-color);
       font-weight: 700;
     }

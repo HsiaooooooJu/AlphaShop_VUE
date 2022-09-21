@@ -17,9 +17,9 @@
         </router-link>
 
         <div class="menu__item__link dark-mode">
-          <label for="dark-mode__toggle" class="dark-mode__label">
-            <img src="../assets/images/moon.svg" alt="">
-            <img src="../assets/images/sun.svg" class="d-none" alt="">
+          <label @click="handleDarkMode" for="dark-mode__toggle" class="dark-mode__label">
+            <img v-show="!darkMode" src="../assets/images/moon.svg" alt="">
+            <img v-show="darkMode" src="../assets/images/sun.svg" alt="">
           </label>
           <input type="checkbox" id="dark-mode__toggle" class="dark-mode__input d-none">
         </div>
@@ -32,8 +32,8 @@
     </label>
 
     <router-link to="#" class="navbar__brand align-center mt-1">
-      <img src="../assets/images/logo.svg" alt="">
-      <img src="../assets/images/white-logo.svg" class="d-none" alt="">
+      <img v-show="!darkMode" src="../assets/images/logo.svg" alt="">
+      <img v-show="darkMode" src="../assets/images/white-logo.svg" alt="">
     </router-link>
     
   </nav>
@@ -74,7 +74,24 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      navItems: navbarMenu.navItems
+      navItems: navbarMenu.navItems,
+      darkMode: false
+    }
+  },
+  methods: {
+    handleDarkMode() {
+      this.darkMode = !this.darkMode;
+    }
+  },
+  watch: {
+    darkMode: {
+      handler() {
+        if(this.darkMode) {
+          document.documentElement.setAttribute("data-theme", "dark")
+        } else {
+          document.documentElement.setAttribute("data-theme", "")
+        }
+      }
     }
   }
 }
