@@ -61,6 +61,10 @@
   .cart,
   .dark-mode {
     filter: var(--icon-brightness);
+
+    &:hover {
+      filter: brightness(290%) sepia(100%) hue-rotate(295deg) saturate(200%);
+    }
   }
 
   .dark-mode {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <Navbar />
+      <Navbar :dark-mode="darkMode" @get-dark-mode-status="getDarkModeStatus" />
     </header>
     <main class="main-content">
       <Stepper :steps="steps" :initial-current-step="currentStep" />
@@ -34,7 +34,7 @@
 
     </main>
     <!-- Footer -->
-    <Footer />
+    <Footer :dark-mode="darkMode" />
 
   </div>
 </template>
@@ -83,7 +83,8 @@ export default {
         },
         payment: {},
         cart: {}
-      }
+      },
+      darkMode: false
     }
   },
   methods: {
@@ -117,10 +118,17 @@ export default {
       this.order.cart = cartInfo
       this.saveStorage()
     },
+    getDarkModeStatus() {
+      this.darkMode = !this.darkMode
+      if(this.darkMode) {
+        document.documentElement.setAttribute("data-theme", "dark")
+      } else {
+        document.documentElement.setAttribute("data-theme", "")
+      }
+    },
     saveStorage() {
       localStorage.setItem(this.storageKey, JSON.stringify(this.order))
     },
-
   },
   created() {
     this.fetchOrder()

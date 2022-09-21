@@ -72,27 +72,20 @@ const navbarMenu = {
 
 export default {
   name: 'Navbar',
+  props: {
+    darkMode: {
+      type: Boolean
+    }
+  },
   data() {
     return {
       navItems: navbarMenu.navItems,
-      darkMode: false
     }
   },
   methods: {
     handleDarkMode() {
-      this.darkMode = !this.darkMode;
-    }
+      this.$emit('get-dark-mode-status')
+    },
   },
-  watch: {
-    darkMode: {
-      handler() {
-        if(this.darkMode) {
-          document.documentElement.setAttribute("data-theme", "dark")
-        } else {
-          document.documentElement.setAttribute("data-theme", "")
-        }
-      }
-    }
-  }
 }
 </script>

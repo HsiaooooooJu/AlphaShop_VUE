@@ -87,6 +87,7 @@ input:invalid {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--input-placeholder);
   opacity: 1;
+  background-color: transparent;
   /* Firefox adds a lower opacity to the placeholder,
     so use opacity: 1 to fix this. */
 }
@@ -94,9 +95,11 @@ input:invalid {
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: var(--input-placeholder);
+  background-color: transparent;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: var(--input-placeholder);
+  background-color: transparent;
 }
