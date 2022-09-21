@@ -3,7 +3,7 @@
     <h3 class="stepper__title my-5">結帳</h3>
     <div class="stepper__container container">
 
-      <div v-for="step in steps" :key="step.id" :class="['stepper__step', { active: initialCurrentStep >= step.id }]">
+      <div v-for="step in steps" :key="step.id" :class="['stepper__step', { active: initialCurrentStep >= step.id }, { checked: initialCurrentStep >= step.id + 1 }]">
         <div class="stepper__step__circle-container"></div>
         <label class="stepper__step__label" for="">{{ step.title }}</label>
       </div>
