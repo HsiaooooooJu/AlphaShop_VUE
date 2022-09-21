@@ -26,7 +26,7 @@ input {
 }
 
 .form-content__part {
-  margin: 5rem auto 1rem auto;
+  margin: 2rem auto;
 
   &__destination {
     display: flex;
@@ -46,27 +46,11 @@ input {
     }
 
     .form-row.gender-row {
-      width: 30%;
+      width: 35%;
     }
 
     .form-row.name-row {
-      width: 65%;
-    }
-
-    .form-row.tel-row {
-      width: 47.5%;
-    }
-
-    .form-row.email-row {
-      width: 47.5%;
-    }
-
-    .form-row.county-row {
-      width: 30%;
-    }
-
-    .form-row.address-row {
-      width: 65%;
+      width: 60%;
     }
   }
 
@@ -122,7 +106,7 @@ input {
       }
     }
 
-    .shipping-price {
+    span {
       width: 100%;
       text-align: right;
       font-size: 0.8rem;
@@ -141,20 +125,58 @@ input {
       margin: 0.5rem 0;
     }
 
-    .form-row.card-num-row {
-      width: 65%;
-    }
-
-    .form-row.card-holder-row {
-      width: 65%;
-    }
-
     .form-row.valid-date-row {
       width: 45%;
     }
 
     .form-row.cvc-row {
       width: 46%;
+    }
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .form-panel {
+    grid-area: 2 / 1 / 2 / 1;
+
+    .form-content__part {
+      margin: 5rem auto 1rem auto;
+
+      &__destination {
+        .form-row.gender-row {
+          width: 30%;
+        }
+
+        .form-row.name-row {
+          width: 65%;
+        }
+
+        .form-row.tel-row {
+          width: 47.5%;
+        }
+
+        .form-row.email-row {
+          width: 47.5%;
+        }
+
+        .form-row.county-row {
+          width: 30%;
+        }
+
+        .form-row.address-row {
+          width: 65%;
+        }
+      }
+
+      &__payment {
+        .form-row.card-holder-row {
+          width: 65%;
+        }
+
+        .form-row.card-num-row {
+          width: 65%;
+        }
+      }
     }
   }
 }

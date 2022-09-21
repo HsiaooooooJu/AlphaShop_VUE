@@ -1,5 +1,7 @@
 <template>
   <nav class="navbar">
+    <input type="checkbox" class="navbar__toggle" id="navbar__toggle">
+    
     <ul class="navbar__menu">
       <li v-for="item in navItems" :key="item.id" class="navbar__menu__item">
         <router-link :to="item.link" class="navbar__menu__item__link">{{item.title}}</router-link>
@@ -24,6 +26,10 @@
       </li>
       
     </ul>
+
+    <label for="navbar__toggle" class="navbar__toggle-label cursor-pointer">
+      <img src="../assets/images/hamburger.svg" class="toggle-label__hamburger">
+    </label>
 
     <router-link to="#" class="navbar__brand align-center mt-1">
       <img src="../assets/images/logo.svg" alt="">
