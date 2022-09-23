@@ -31,7 +31,7 @@
       <img src="../assets/images/hamburger.svg" class="toggle-label__hamburger">
     </label>
 
-    <router-link to="#" class="navbar__brand align-center mt-1">
+    <router-link to="/" class="navbar__brand align-center mt-1">
       <img v-show="!darkMode" src="../assets/images/logo.svg" alt="">
       <img v-show="darkMode" src="../assets/images/white-logo.svg" alt="">
     </router-link>

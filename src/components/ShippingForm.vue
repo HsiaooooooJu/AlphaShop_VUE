@@ -6,7 +6,7 @@
       <div v-for="shipping in shippingMethods" :key="shipping.id" class="shipping__form-row form-row cursor-pointer">
         <input v-model="selected.picked" @change="getShippingPrice(shipping.price)" :value="shipping.name"
           :id="shipping.name" type="radio" name="shipping-method">
-        <label class="cursor-pointer" for="shipping.name">
+        <label class="cursor-pointer" :for="shipping.name">
           <p class="shipping-method">{{ shipping.method }}</p>
           <p class="shipping-time">{{ shipping.days }}</p>
         </label>

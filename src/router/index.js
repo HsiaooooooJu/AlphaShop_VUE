@@ -9,10 +9,10 @@ const routes = [
   {
     path: '/',
     name: 'root',
-    redirect: '/checkout'
+    component: Checkout
   },
   {
-    path: '/checkout',
+    path: '/:stepId',
     name: 'checkout',
     component: Checkout
   },

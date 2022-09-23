@@ -37,8 +37,7 @@
     <Footer :dark-mode="darkMode" />
 
     <!-- Modal -->
-    <Modal v-show="showModal" :order="order" @close="showModal=false" />
-    <!-- <Modal v-show="showModal" :order="order" /> -->
+    <!-- <Modal v-show="showModal" :order="order" @close="showModal=false" /> -->
 
   </div>
 </template>
@@ -56,7 +55,7 @@ import BtnPanel from '../components/BtnPanel.vue'
 import CartPanel from '../components/CartPanel.vue'
 import Footer from '../components/Footer.vue'
 
-import Modal from '../components/Modal.vue'
+// import Modal from '../components/Modal.vue'
 
 export default {
   name: "Checkout",
@@ -69,7 +68,7 @@ export default {
     CartPanel,
     BtnPanel,
     Footer,
-    Modal
+    // Modal
   },
   data() {
     const { shippingMethods, steps, productData } = CheckoutConfigs
@@ -105,6 +104,7 @@ export default {
     handleStep(payload) {
       const { currentStep } = payload
       this.currentStep = currentStep
+      this.$router.push({ path: `/${this.currentStep}` })
       // console.log(currentStep)
     },
     getReceiverInfo(payload) {
@@ -133,12 +133,26 @@ export default {
       }
     },
     handleOrder() {
-      this.showModal = true
-      // this.$swal.fire(
-      // "訂單已送出!",
-      // `訂單總金額：${this.order.cart.subtotal}`,
-      // "success"
-      // );
+      // this.showModal = true
+      this.$swal.fire({
+        title:  "訂單已送出!",
+        text: `訂單總金額：${this.order.cart.subtotal}`,
+        icon: "success",
+        confirmButtonColor: '#F67599'
+      });
+      console.log(`
+        Salutation : ${ this.order.receiver.gender }
+        Name : ${ this.order.receiver.name }
+        Phone : ${ this.order.receiver.tel }
+        City : ${ this.order.receiver.county }
+        Addr : ${ this.order.receiver.address }
+        Shipping Fee : ${ this.order.shipping.price }
+        Card Holder : ${ this.order.payment.cardHost }
+        Card Number : ${ this.order.payment.cardNum }
+        Expire Date : ${ this.order.payment.cardDate }
+        CVV : ${ this.order.payment.securityCode }
+        Total Price : ${ this.order.cart.subtotal }
+      `)
     },
     saveStorage() {
       localStorage.setItem(this.storageKey, JSON.stringify(this.order))
@@ -146,6 +160,9 @@ export default {
   },
   created() {
     this.fetchOrder()
-  }
+    this.currentStep = Number(this.$route.params.stepId)
+      ? Number(this.$route.params.stepId)
+      : 1;
+  },
 }
 </script>

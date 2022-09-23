@@ -13,7 +13,7 @@
             <div @click="addQty(index)" class="amount__add cursor-pointer">＋</div>
 
           </div>
-          <div class="product-details__price">{{ product.price }}</div>
+          <div class="product-details__price">{{ product.formattedPrice }}</div>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ export default {
       cart: {
         products: [],
         subtotal: 0
-      }
+      },
     }
   },
   methods: {
@@ -61,7 +61,8 @@ export default {
       this.cart.products = this.initialProducts.map((product => {
         return {
           ...product,
-          amount: 1
+          amount: 1,
+          formattedPrice: product.price.toLocaleString()
         }
       }))
     },
